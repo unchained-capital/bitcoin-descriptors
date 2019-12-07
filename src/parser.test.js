@@ -10,4 +10,5 @@ describe("Parsing:", () => {
       expect(parseBitcoinDescriptor(descriptor)).toEqual(data);
     });
   });
+
 });

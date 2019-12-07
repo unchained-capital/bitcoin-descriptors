@@ -209,4 +209,32 @@ describe("Validating", () => {
 
   });
 
+  describe("raw", ()  => {
+
+    test("with missing, empty, or otherwise bad argument", () => {
+      expect(validateBitcoinDescriptor(["raw"])).toMatch(/requires at least one argument/i);
+      expect(validateBitcoinDescriptor(["raw", null])).toMatch(/no script descriptor/i);
+      expect(validateBitcoinDescriptor(["raw", []])).toMatch(/invalid script descriptor/i);
+      expect(validateBitcoinDescriptor(["raw", {}])).toMatch(/invalid script descriptor/i);
+      expect(validateBitcoinDescriptor(["raw", 0])).toMatch(/no script descriptor/i);
+      expect(validateBitcoinDescriptor(["raw", 1])).toMatch(/invalid script descriptor/i);
+    });
+
+    test("with valid hex", ()  => {
+      expect(validateBitcoinDescriptor([
+        "raw",
+        "ababab"
+      ])).toEqual("");
+    });
+
+    test("with multiple valid hex", ()  => {
+      expect(validateBitcoinDescriptor([
+        "raw",
+        "ababab",
+        "cdcdcd",
+      ])).toMatch(/accepts only a single argument/i);
+    });
+
+  });
+
 });

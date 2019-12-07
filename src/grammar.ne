@@ -23,7 +23,7 @@ scriptArg -> script
   | key
   | number
   | %address
-  | %hex
+  | hex
 
 key -> keyPrefix:? keyBody {% key %}
 
@@ -41,3 +41,4 @@ fingerprint -> %fingerprint {% value %}
 number -> %number {% number %}
 derivationPath -> %derivationPath {% value %}
 wildcard -> %wildcard {% wildcard %}
+hex -> %hex {% value %}

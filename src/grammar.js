@@ -28,7 +28,7 @@ var grammar = {
     {"name": "scriptArg", "symbols": ["key"]},
     {"name": "scriptArg", "symbols": ["number"]},
     {"name": "scriptArg", "symbols": [(lexer.has("address") ? {type: "address"} : address)]},
-    {"name": "scriptArg", "symbols": [(lexer.has("hex") ? {type: "hex"} : hex)]},
+    {"name": "scriptArg", "symbols": ["hex"]},
     {"name": "key$ebnf$1", "symbols": ["keyPrefix"], "postprocess": id},
     {"name": "key$ebnf$1", "symbols": [], "postprocess": function(d) {return null;}},
     {"name": "key", "symbols": ["key$ebnf$1", "keyBody"], "postprocess": key},
@@ -49,7 +49,8 @@ var grammar = {
     {"name": "fingerprint", "symbols": [(lexer.has("fingerprint") ? {type: "fingerprint"} : fingerprint)], "postprocess": value},
     {"name": "number", "symbols": [(lexer.has("number") ? {type: "number"} : number)], "postprocess": number},
     {"name": "derivationPath", "symbols": [(lexer.has("derivationPath") ? {type: "derivationPath"} : derivationPath)], "postprocess": value},
-    {"name": "wildcard", "symbols": [(lexer.has("wildcard") ? {type: "wildcard"} : wildcard)], "postprocess": wildcard}
+    {"name": "wildcard", "symbols": [(lexer.has("wildcard") ? {type: "wildcard"} : wildcard)], "postprocess": wildcard},
+    {"name": "hex", "symbols": [(lexer.has("hex") ? {type: "hex"} : hex)], "postprocess": value}
 ]
   , ParserStart: "descriptor"
 }

@@ -333,6 +333,29 @@ module.exports = [
     ]
   ],
 
+
+  [
+    "raw(ababab)",
+    [
+      "raw",
+      "ababab",
+    ]
+  ],
+
+
+  // [
+  //   "addr(1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2)",
+  //   [
+  //     "addr",
+  //     {
+  //       inputType: "address",
+  //       value: "1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2",
+  //       parenetFingerprint: null,
+  //       parenetDerivationPath: null,
+  //     }
+  //   ]
+  // ],
+
   // [
   //   "pk(5HueCGU8rMjxEXxiPuD5BDku4MkFqeZyd4dZ1jvhTVqvbTLvyTJ)",
   //   [

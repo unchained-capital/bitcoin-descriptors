@@ -14,7 +14,7 @@ const emitFunction = (data) => {
 };
 
 const emitArg = (data) => {
-  if (typeof(data) === "number") {
+  if (typeof(data) === "number" || typeof(data) === "string") {
     return data;
   }
   if (data.value) {

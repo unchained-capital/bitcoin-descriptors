@@ -14,6 +14,6 @@ test("API is exported", () => {
   expect(parseBitcoinDescriptor).toBeDefined();
   expect(emitBitcoinDescriptor).toBeDefined();
   expect(validateBitcoinDescriptor).toBeDefined();
-  expect(createBitcoinDescriptorChecksum).toBeDefined();
-  expect(validateBitcoinDescriptorChecksum).toBeDefined();
+  expect(createBitcoinDescriptorChecksum).toBeUndefined();
+  expect(validateBitcoinDescriptorChecksum).toBeUndefined();
 });

@@ -29,6 +29,35 @@ console.log(parseBitcoinDescriptor("wsh(multi(1,xpub661MyMwAqRbcFW31YEwpkMuc5THy
 // ]
 ```
 
+Bad descriptors will throw an error in `parseBitcoinDescriptor`:
+
+```javascript
+const {parseBitcoinDescriptor} = require("bitcoin-descriptors");
+
+parseBitcoinDescriptor("pk(0279be667ef9dcbbac55a06295ce870b07029bfcdb2dce28d959f2815b16f81798"); // missinig final ')' in descriptor
+// ..."Unable to parse incomplete input"...
+```
+
+If a descriptor parses, can pass the results of `parseBitcoinDescriptor` to `validateBitcoinDescriptor` which performs further checks:
+
+```javascript
+const {parseBitcoinDescriptor,validateBitcoinDescriptor} = require("bitcoin-descriptors");
+console.log(validateBitcoinDescriptor(parseBitcoinDescriptor("sh(wsh(wpkh(02e493dbf1c10d80f3581e4904930b1404cc6c13900ee0758474fa94abe8c4cd13)))")))
+// Cannot nest function "wpkh" within function "wsh".
+```
+
+You can also emit a descriptor from a data structure:
+
+```
+const {emitBitcoinDescriptor} = require("bitcoin-descriptors");
+
+console.log(parseBitcoinDescriptor("pk(0279be667ef9dcbbac55a06295ce870b07029bfcdb2dce28d959f2815b16f81798)"));
+// ]
+
+console.log(emitBitcoinDescriptor(['pk', { value: "0279be667ef9dcbbac55a06295ce870b07029bfcdb2dce28d959f2815b16f81798"}]))
+// pk(0279be667ef9dcbbac55a06295ce870b07029bfcdb2dce28d959f2815b16f81798)
+```
+
 Developers
 ----------
 

@@ -111,6 +111,12 @@ const validateBitcoinDescriptor = (data, nonTop, inWSH) => {
         if (functionName === "addr") {
         } else {
           // raw
+          if (!data[1]) {
+            return "No script descriptor";
+          }
+          if (typeof(data[1]) !== "string") {
+            return "Invalid script descriptor";
+          }
         }
       }
     }
@@ -132,6 +138,6 @@ const validateKey = (data) => {
   }
 
   return "";
-}
+};
 
 module.exports = validateBitcoinDescriptor;
