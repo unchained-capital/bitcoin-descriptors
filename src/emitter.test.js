@@ -1,13 +1,13 @@
-const parseBitcoinDescriptor = require("./parser");
+const emitBitcoinDescriptor = require("./emitter");
 const FIXTURES = require("./test/fixtures");
 
-describe("Parsing:", () => {
+describe("Emitting:", () => {
 
   FIXTURES.forEach((fixture) => {
     const descriptor = fixture[0];
     const data = fixture[1];
     test(descriptor, () => {
-      expect(parseBitcoinDescriptor(descriptor)).toEqual(data);
+      expect(emitBitcoinDescriptor(data)).toEqual(descriptor);
     });
   });
 });
